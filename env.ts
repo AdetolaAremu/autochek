@@ -1,11 +1,2 @@
-const process = {
-  env: {
-    // Local Server
-    SERVICE_URL: "https://api.staging.myautochek.com/v1",
-
-    // Heroku live server
-    // SERVICE_URL: "https://deal-estate.herokuapp.com/api"
-  },
-};
-
-export default process;
+export const base_url_staging = "https://api.staging.myautochek.com/v1";
+export const base_url_prod = "https://api-prod.autochek.africa/v1";

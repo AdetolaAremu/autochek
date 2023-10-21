@@ -14,7 +14,7 @@ import Link from "next/link";
 import React from "react";
 
 const Navbar = () => {
-  const [isMenuOpen, setIsMenuOpen] = React.useState(true);
+  // const [isMenuOpen, setIsMenuOpen] = React.useState(true);
 
   // const toggleMenu = () => {
   //   setIsMenuOpen(!isMenuOpen);
@@ -73,12 +73,15 @@ const Navbar = () => {
         <div className="mx-2 md:mx-5 lg:mx-16 mt-10 bg-white">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="w-full md:w-auto flex justify-between md:block">
-              <Image
-                src="/images/logo.webp"
-                alt="logo"
-                height={150}
-                width={150}
-              />
+              <Link href="/">
+                <Image
+                  className="mt-2 md:mt-0"
+                  src="/images/logo.webp"
+                  alt="logo"
+                  height={150}
+                  width={150}
+                />
+              </Link>
 
               <div className="bg-black text-white py-3 px-4 rounded-lg block md:hidden">
                 <FontAwesomeIcon
@@ -100,8 +103,7 @@ const Navbar = () => {
             </div>
 
             <div
-              className={`mt-1 flex justify-center md:justify-end items-center space-x-4 transition-max-h ease-in-out duration-300 overflow-hidden ${
-                isMenuOpen ? "max-h-full" : "max-h-0"
+              className={`mt-1 flex justify-center md:justify-end items-center space-x-4 transition-max-h ease-in-out duration-300 overflow-hidden 
               }`}
             >
               <Link
@@ -114,16 +116,16 @@ const Navbar = () => {
                 href="/market"
                 className="hover:text-blue-500 ease-in-out duration-300"
               >
-                Market Place
+                Market
               </Link>
               <Link
-                href="/"
+                href="/aboutus"
                 className="hover:text-blue-500 ease-in-out duration-300"
               >
                 About Us
               </Link>
               <Link
-                href="/"
+                href="/contact"
                 className="hover:text-blue-500 ease-in-out duration-300"
               >
                 Contact Us

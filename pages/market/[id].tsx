@@ -1,4 +1,5 @@
 import { getSingleCar } from "@/api";
+import BreadCrumb from "@/components/BreadCrumb";
 import Layout from "@/components/layout";
 import { CarItem } from "@/interfaces/Cars";
 import { GetServerSideProps, NextPage } from "next";
@@ -38,17 +39,13 @@ const GetSingleCar: NextPage<CarListResponse> = ({ carList }) => {
   return (
     <Layout>
       <div className="bg-gray-300 py-3 mt-8">
-        <div className="flex mx-16">
-          <Link href="/" className="text-orange-700">
-            Home
-          </Link>
-          <div className="mx-5">/</div>
-          <Link href="/market" className="text-orange-700">
-            Market Place
-          </Link>
-          <div className="mx-5">/</div>
-          <div>{carList.carName}</div>
-        </div>
+        <BreadCrumb
+          items={[
+            { text: "Home", link: "/" },
+            { text: "Market Place", link: "/market" },
+            { text: carList.carName, link: "" },
+          ]}
+        />
       </div>
 
       <div className="mx-16 mt-10">

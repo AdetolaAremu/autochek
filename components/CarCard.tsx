@@ -1,5 +1,7 @@
 import { CarItem } from "@/interfaces/Cars";
 import { CarListResponse, MakeListResponse } from "@/pages";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { NextPage } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -15,14 +17,24 @@ const CarCard: NextPage<CarListingProps> = ({ carList }) => {
       key={carList.id}
       className="w-80 md:w-[17.3rem] lg:w-80 xl:w-[18rem] 2xl:w-80 p-1 mt-3 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300"
     >
-      <div>
+      <div className="relative">
         <Image
           src={carList.imageUrl}
-          className="w-full h-56 bg-cover object-fill"
+          className={`w-full h-56 bg-cover object-fill ${
+            !carList.imageUrl && "blur-sm"
+          }`}
           alt="brands"
           height={100}
           width={100}
         />
+        <div className="bg-gray-600 px-1 absolute flex -mt-6">
+          <div className="mr-3">
+            <FontAwesomeIcon icon={faStar} className="text-yellow-500" />
+          </div>
+          <div className="text-xs text-white pt-1">
+            {carList.gradeScore.toFixed(1)}
+          </div>
+        </div>
       </div>
 
       <div className="mt-2">

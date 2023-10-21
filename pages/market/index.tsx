@@ -7,9 +7,7 @@ import { CarItem } from "@/interfaces/Cars";
 import { CarMake } from "@/interfaces/Makers";
 import { GetServerSideProps, NextPage } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import BreadCrumb from "../../components/BreadCrumb";
-import Home from "../../app/pagess";
 
 export interface CarListResponse {
   carList: CarItem[];
@@ -48,11 +46,6 @@ const MarketPlace: NextPage<CarListResponse & MakeListResponse> = ({
             { text: "Market Place", link: "" },
           ]}
         />
-        {/* <div className="flex mx-16">
-          <Link href="/" className="text-orange-700">Home</Link>
-          <div className="mx-5">/</div>
-          <div>Market Place</div>
-        </div> */}
       </div>
 
       <div className="m-2 md:mx-16">

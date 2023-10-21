@@ -29,19 +29,42 @@ const HomePage: NextPage<MakeListResponse & CarListResponse> = ({
   makeList,
   carList,
 }) => {
+  const [currentIndex, setCurrentIndex] = React.useState(0);
+
+  const images = ["/images/welcome-banner.jpg", "/images/benz.jpg"];
+
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 3000);
+
+    return () => {
+      clearInterval(interval);
+    };
+  });
+
   return (
     <Layout>
       <div className="mt-8">
-        <Image
-          src="/images/corolla1.webp"
-          className="w-full h-[38rem] bg-cover"
-          alt="logo"
-          height={100}
-          width={100}
-        />
+        <div className="relative">
+          {images.map((image, index) => (
+            <div
+              key={index}
+              className={`absolute w-full h-full transition-opacity duration-1000 ${
+                index === currentIndex ? "opacity-100" : "opacity-0"
+              }`}
+            >
+              <img
+                src={image}
+                alt="top img"
+                className="h-[38rem] w-full bg-cover object-cover"
+              />
+            </div>
+          ))}
+        </div>
 
-        <div className="mt-7">
-          <div className="text-2xl text-center">Featured</div>
+        <div className="pt-[40rem]">
+          <div className="text-2xl text-center">Featured Cars</div>
 
           <div className="mx-2 md:mx-5 lg:mx-10 xl:mx-16 flex flex-col md:flex-row">
             <div className="w-full md:w-3/4">
@@ -50,19 +73,18 @@ const HomePage: NextPage<MakeListResponse & CarListResponse> = ({
                   <CarCard carList={el} key={el.id} />
                 ))}
               </div>
-
-              <div className="flex justify-center flex-col md:flex-row">
+              <div className="flex justify-center flex-col md:flex-row relative">
                 <Link
-                  href="/"
+                  href="/market"
                   className="bg-gray-800 text-sm text-white px-2 py-2 mt-3 rounded-md flex justify-center"
                 >
-                  <span className="ml-2">More Details</span>
-                  <span className="ml-3">
+                  <div className="ml-2">More Cars</div>
+                  <div className="ml-3">
                     <FontAwesomeIcon
                       icon={faArrowAltCircleRight}
                       className="fas fa-check mr-3"
                     />
-                  </span>
+                  </div>
                 </Link>
               </div>
             </div>
