@@ -2,59 +2,35 @@ import React from "react";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faAngleRight,
+  faArrowAltCircleRight,
   faMoneyBill,
   faShippingFast,
-  faStar,
-  faStarHalf,
   faThumbsUp,
 } from "@fortawesome/free-solid-svg-icons";
-import vehicleTypes from "@/utils/Pseudo";
 import Layout from "@/components/layout";
 import { GetServerSideProps, NextPage } from "next";
 import { CarMake, Pagination } from "@/interfaces/Makers";
-import { getPopularBrands } from "@/api";
+import { getAllCars, getPopularBrands } from "@/api";
+import { CarItem } from "@/interfaces/Cars";
+import Link from "next/link";
+import CarCard from "@/components/CarCard";
+import SideCard from "@/components/SideCard";
 
 export interface MakeListResponse {
   makeList: CarMake[];
   pagination: Pagination;
 }
 
-const HomePage: NextPage<MakeListResponse> = ({ makeList }) => {
-  const ratingsCount: number[] = [5.0, 4.0, 3.5, 3.0, 2.5];
+export interface CarListResponse {
+  carList: CarItem[];
+}
 
-  const renderStars = (rating: number): JSX.Element[] => {
-    const fullStars = Math.floor(rating);
-    const hasHalfStar: boolean = rating % 1 === 0.5;
-
-    const stars: JSX.Element[] = [];
-
-    for (let i = 0; i < fullStars; i++) {
-      stars.push(
-        <FontAwesomeIcon icon={faStar} key={i} className="text-yellow-500" />
-      );
-    }
-
-    if (hasHalfStar) {
-      stars.push(
-        <FontAwesomeIcon
-          icon={faStarHalf}
-          key="half"
-          className="text-yellow-500"
-        />
-      );
-    }
-
-    return stars;
-  };
-
+const HomePage: NextPage<MakeListResponse & CarListResponse> = ({
+  makeList,
+  carList,
+}) => {
   return (
     <Layout>
-      <div>
-        {/* {makeList?.map((el: CarMake) => (
-          <div key={el.id}>{el.name}</div>
-        ))} */}
-      </div>
       <div className="mt-8">
         <Image
           src="/images/corolla1.webp"
@@ -65,135 +41,33 @@ const HomePage: NextPage<MakeListResponse> = ({ makeList }) => {
         />
 
         <div className="mt-10">
-          <div className="text-2xl text-center">Popular Brands</div>
+          <div className="text-2xl text-center">Featured</div>
 
           <div className="mx-16 flex">
             <div className="w-3/4">
-              <div className="bg-gray-50 py-4 shadow-lg grid grid-cols-3 gap-4 mt-7">
-                {makeList.map((el, index) => (
-                  <div key={index} className="flex flex-col items-center mt-2">
-                    <Image
-                      src={el.imageUrl}
-                      alt="brands"
-                      height={100}
-                      width={100}
+              <div className="py-4 grid grid-cols-3">
+                {carList.map((el) => (
+                  <CarCard carList={el} key={el.id} />
+                ))}
+              </div>
+
+              <div className="flex justify-center">
+                <Link
+                  href="/"
+                  className="bg-gray-800 text-sm text-white px-2 py-2 mt-3 rounded-md flex justify-center"
+                >
+                  <span className="ml-2">More Details</span>
+                  <span className="ml-3">
+                    <FontAwesomeIcon
+                      icon={faArrowAltCircleRight}
+                      className="fas fa-check mr-3"
                     />
-                    <div className="text-center mt-3 text-lg">{el.name}</div>
-                  </div>
-                ))}
+                  </span>
+                </Link>
               </div>
             </div>
 
-            <div className="bg-gray-100 px-6 shadow-xl w-1/4 mt-7">
-              <div className="text-lg pt-3 text-[#0579C9]">Search Here...</div>
-
-              <div className="mt-2">
-                <input
-                  type="text"
-                  className="border shadow-md rounded-lg py-1 pl-2"
-                  placeholder="e.g Corolla 2015"
-                />
-                <button className="bg-[#0579C9] text-white py-1 px-4 ml-2 rounded-md">
-                  <FontAwesomeIcon
-                    icon={faAngleRight}
-                    className="fas fa-check"
-                  />
-                </button>
-              </div>
-
-              <div className="bg-gray-400 border h-[2.5px] my-4"></div>
-
-              <div className="text-lg pt-1 text-[#0579C9]">Price</div>
-              <ul className="text-sm mt-1">
-                <li className="cursor-pointer">Under 3M</li>
-                <li className="cursor-pointer pt-1">3M - 5M</li>
-                <li className="cursor-pointer pt-1">5M - 8M</li>
-                <li className="cursor-pointer pt-1">8M - 12M</li>
-                <li className="cursor-pointer pt-1">12M - 15M</li>
-                <li className="cursor-pointer pt-1">18M - 21M</li>
-                <li className="cursor-pointer pt-1">Over 21M</li>
-              </ul>
-              <div className="bg-gray-400 border h-[2.5px] my-4"></div>
-
-              <div className="text-lg pt-1 text-[#0579C9]">Discount</div>
-              <ul className="">
-                <li>
-                  <div className="flex">
-                    <div className="pr-2">
-                      <input className="" type="checkbox" name="" />
-                    </div>
-                    <div className="text-sm pt-[1px]">5% or More</div>
-                  </div>
-
-                  <div className="flex">
-                    <div className="pr-2">
-                      <input className="" type="checkbox" name="" />
-                    </div>
-                    <div className="text-sm pt-[1px]">10% or More</div>
-                  </div>
-
-                  <div className="flex">
-                    <div className="pr-2">
-                      <input className="" type="checkbox" name="" />
-                    </div>
-                    <div className="text-sm pt-[1px]">20% or More</div>
-                  </div>
-
-                  <div className="flex">
-                    <div className="pr-2">
-                      <input className="" type="checkbox" name="" />
-                    </div>
-                    <div className="text-sm pt-[1px]">30% or More</div>
-                  </div>
-
-                  <div className="flex">
-                    <div className="pr-2">
-                      <input className="" type="checkbox" name="" />
-                    </div>
-                    <div className="text-sm pt-[1px]">50% or More</div>
-                  </div>
-
-                  <div className="flex">
-                    <div className="pr-2">
-                      <input className="" type="checkbox" name="" />
-                    </div>
-                    <div className="text-sm pt-[1px]">60% or More</div>
-                  </div>
-                </li>
-              </ul>
-
-              <div className="bg-gray-400 border h-[2.5px] my-4"></div>
-
-              <div className="text-lg pt-1 text-[#0579C9]">Customer Review</div>
-              <div>
-                <div className="text-sm">
-                  {ratingsCount.map((el) => (
-                    <div key={el} className="flex pt-1">
-                      <div>{renderStars(el)}</div>
-                      <div className="ml-3">
-                        {Number.isInteger(el) ? `${el}.0` : el}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div className="bg-gray-400 border h-[2.5px] my-4"></div>
-
-              <div className="text-lg pt-1 text-[#0579C9]">Vehicles</div>
-              <ul className="">
-                {vehicleTypes.map((el) => (
-                  <li key={el}>
-                    <div className="flex">
-                      <div className="pr-2">
-                        <input className="" type="checkbox" name="" />
-                      </div>
-                      <div className="text-sm pt-[1px]">{el}</div>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            <SideCard makeList={makeList} />
           </div>
 
           <div className="flex justify-center mt-10 mx-16">
@@ -246,9 +120,10 @@ const HomePage: NextPage<MakeListResponse> = ({ makeList }) => {
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const makers = await getPopularBrands();
+  const carList = await getAllCars(9, 1);
 
   return {
-    props: { makeList: makers.makeList },
+    props: { makeList: makers.makeList, carList: carList.result },
   };
 };
 

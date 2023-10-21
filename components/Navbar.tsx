@@ -8,6 +8,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 const Navbar = () => {
@@ -89,13 +90,24 @@ const Navbar = () => {
         </div>
       </div>
 
-      <ul className="mt-10 flex justify-center">
-        <li className="mr-10">Home</li>
-        <li className="mr-10">Market Place</li>
-        <li className="mr-10">About Us</li>
-        <li className="mr-10">New Arrivals</li>
-        <li className="mr-10">Contact Us</li>
-      </ul>
+      <div className="mt-10 flex justify-center">
+        <Link href="/" className="mr-10">
+          Home
+        </Link>
+        {/* <Link href="/market" className="mr-10"></Link> */}
+        <Link href="/market" className="mr-10">
+          Market Place
+        </Link>
+        <Link href="/" className="mr-10">
+          About Us
+        </Link>
+        <Link href="/" className="mr-10">
+          New Arrivals
+        </Link>
+        <Link href="/" className="mr-10">
+          Contact Us
+        </Link>
+      </div>
     </div>
   );
 };
