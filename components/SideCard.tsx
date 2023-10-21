@@ -43,18 +43,20 @@ const SideCard: NextPage<MakeListProps> = ({ makeList }) => {
   };
   return (
     <div>
-      <div className="bg-gray-100 px-6 shadow-lg mt-7">
+      <div className="bg-gray-100 px-1 xl:px-6 shadow-lg mt-7">
         <div className="text-lg pt-3 text-[#0579C9]">Search Here...</div>
 
-        <div className="mt-2">
+        <div className="mt-2 flex flex-col lg:flex-row">
           <input
             type="text"
             className="border shadow-md rounded-lg py-1 pl-2"
             placeholder="e.g Corolla 2015"
           />
-          <button className="bg-[#0579C9] text-white py-1 px-4 ml-2 rounded-md">
-            <FontAwesomeIcon icon={faAngleRight} className="fas fa-check" />
-          </button>
+          <div>
+            <button className="bg-[#0579C9] text-white py-1 px-4 ml-0 lg:ml-[1px] xl:ml-2 mt-2 lg:mt-0 rounded-md">
+              <FontAwesomeIcon icon={faAngleRight} className="fas fa-check" />
+            </button>
+          </div>
         </div>
 
         <div className="bg-gray-400 border h-[2.5px] my-4"></div>

@@ -13,7 +13,7 @@ const CarCard: NextPage<CarListingProps> = ({ carList }) => {
   return (
     <div
       key={carList.id}
-      className="w-80 p-1 mt-3 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300"
+      className="w-80 md:w-[17.3rem] lg:w-80 xl:w-[18rem] 2xl:w-80 p-1 mt-3 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300"
     >
       <div>
         <Image
@@ -37,7 +37,11 @@ const CarCard: NextPage<CarListingProps> = ({ carList }) => {
 
         <div className="flex justify-between text-sm mt-1">
           <div className="font-bold">
-            {carList.title} ({carList.year})
+            {/* {carList.title} */}
+            {carList.title.length > 13
+              ? `${carList?.title?.slice(0, 13)}...`
+              : carList?.title}
+            ({carList.year})
           </div>
           <div className="text-gray-600">
             ₦ {carList.marketplacePrice.toLocaleString()}

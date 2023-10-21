@@ -23,19 +23,19 @@ const Navbar = () => {
   return (
     <div>
       <div className="bg-[#0579C9]">
-        <div className="block md:flex mx-2 md:mx-16 py-4 text-md justify-between text-white">
-          <div className="text-center text-lg md:text-md mb-2">
+        <div className="block xl:flex mx-2 md:mx-5 lg:mx-8 xl:mx-16 py-4 text-sm justify-between text-white">
+          <div className="text-center text-md md:text-md mb-2">
             Access top notch vehicle financing
           </div>
-          <div className="block md:flex">
-            <span>
+          <div className="flex flex-wrap justify-center">
+            <div>
               <FontAwesomeIcon
                 icon={faMapMarker}
-                className="fas fa-check mr-1 md:mr-3"
+                className="fas fa-check mr-3"
               />
               Select Location
-            </span>
-            <span className="mx-3 md:mx-10">|</span>
+            </div>
+            <div className="mx-3 md:mx-10">|</div>
 
             <span>
               <FontAwesomeIcon icon={faTruck} className="fas fa-check mr-3" />{" "}
@@ -70,7 +70,7 @@ const Navbar = () => {
       </div>
 
       <div>
-        <div className="mx-2 md:mx-16 mt-10 bg-white">
+        <div className="mx-2 md:mx-5 lg:mx-16 mt-10 bg-white">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="w-full md:w-auto flex justify-between md:block">
               <Image
@@ -100,7 +100,7 @@ const Navbar = () => {
             </div>
 
             <div
-              className={`mt-3 flex justify-center md:justify-end items-center space-x-4 transition-max-h ease-in-out duration-300 overflow-hidden ${
+              className={`mt-1 flex justify-center md:justify-end items-center space-x-4 transition-max-h ease-in-out duration-300 overflow-hidden ${
                 isMenuOpen ? "max-h-full" : "max-h-0"
               }`}
             >

@@ -40,12 +40,12 @@ const HomePage: NextPage<MakeListResponse & CarListResponse> = ({
           width={100}
         />
 
-        <div className="mt-10">
+        <div className="mt-7">
           <div className="text-2xl text-center">Featured</div>
 
-          <div className="m-2 md:mx-16 flex flex-col md:flex-row">
+          <div className="mx-2 md:mx-5 lg:mx-10 xl:mx-16 flex flex-col md:flex-row">
             <div className="w-full md:w-3/4">
-              <div className="py-4 grid grid-cols-1 place-items-center md:grid-cols-3">
+              <div className="py-4 grid grid-cols-1 place-items-center md:grid-cols-2 xl:grid-cols-3">
                 {carList.map((el) => (
                   <CarCard carList={el} key={el.id} />
                 ))}
@@ -72,7 +72,7 @@ const HomePage: NextPage<MakeListResponse & CarListResponse> = ({
             </div>
           </div>
 
-          <div className="flex flex-row md:flex-col justify-center mt-10 m-2 md:mx-16">
+          <div className="flex flex-row md:flex-col justify-center mt-10 mx-2 md:mx-5 lg:mx-16">
             <div className="bg-gray-50 shadow-lg w-full p-4 grid grid-cols-1 md:grid-cols-3 place-items-center">
               <div className="flex my-3">
                 <div className="pt-2">
@@ -81,8 +81,8 @@ const HomePage: NextPage<MakeListResponse & CarListResponse> = ({
                     className="text-[#0579C9] text-5xl"
                   />
                 </div>
-                <div className="ml-16">
-                  <div className="text-3xl">Car Financing</div>
+                <div className="ml-16 md:ml-7 lg:ml-16">
+                  <div className="text-xl lg:text-3xl">Car Financing</div>
                   <div className="text-gray-500">Loan up to 10million</div>
                 </div>
               </div>
@@ -94,8 +94,8 @@ const HomePage: NextPage<MakeListResponse & CarListResponse> = ({
                     className="text-[#0579C9] text-5xl"
                   />
                 </div>
-                <div className="ml-16">
-                  <div className="text-3xl">Fast Delivery</div>
+                <div className="ml-16 md:ml-7 lg:ml-16">
+                  <div className="text-xl lg:text-3xl">Fast Delivery</div>
                   <div className="text-gray-500">All over Africa</div>
                 </div>
               </div>
@@ -107,8 +107,8 @@ const HomePage: NextPage<MakeListResponse & CarListResponse> = ({
                     className="text-[#0579C9] text-5xl"
                   />
                 </div>
-                <div className="ml-16">
-                  <div className="text-3xl">Big Choice</div>
+                <div className="ml-16 md:ml-7 lg:ml-16">
+                  <div className="text-xl lg:text-3xl">Big Choice</div>
                   <div className="text-gray-500">of Brands</div>
                 </div>
               </div>

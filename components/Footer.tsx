@@ -20,7 +20,7 @@ const Footer: NextPage<vehicleTypes> = ({ categories }) => {
   return (
     <div>
       <div className="bg-gray-800 mt-10 py-3">
-        <div className="m-2 md:mx-16 grid grid-cols-1 md:grid-cols-4">
+        <div className="mx-2 md:mx-5 lg:mx-16 grid grid-cols-1 md:grid-cols-4 gap-x-0 md:gap-x-2 lg:gap-x-0">
           <div>
             <div className="text-white text-2xl mb-1 md:mb-3">Categories</div>
             {categories?.map((el) => (
@@ -62,8 +62,12 @@ const Footer: NextPage<vehicleTypes> = ({ categories }) => {
             <div className="text-gray-300 mt-1 md:mt-4">
               Access to quality Loan Financing
             </div>
-            <div className="md:mt-5 mt-2">
-              <input type="text" className="h-10 pl-2" placeholder="Email" />
+            <div className="md:mt-5 mt-2 flex flex-wrap">
+              <input
+                type="text"
+                className="h-10 pl-2 md:w-[60%] lg:w-[70%]"
+                placeholder="Email"
+              />
               <button className="bg-[#0579C9] ml-1 py-2 px-3 text-gray-300">
                 Go
               </button>
@@ -75,22 +79,22 @@ const Footer: NextPage<vehicleTypes> = ({ categories }) => {
               <div>
                 <FontAwesomeIcon
                   icon={faFacebook}
-                  className="text-white bg-[#6788ce] p-2 rounded-full"
+                  className="text-white bg-[#5D77AF] p-2 rounded-full"
                 />
                 <FontAwesomeIcon
                   icon={faTwitter}
-                  className="text-white bg-[#6788ce] mx-3 p-2 rounded-full"
+                  className="text-white bg-[#2393C8] mx-3 p-2 rounded-full"
                 />
                 <FontAwesomeIcon
                   icon={faGooglePlus}
-                  className="text-white bg-[#6788ce] p-2 rounded-full"
+                  className="text-white bg-[#BB4738] p-2 rounded-full"
                 />
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div className="mx-2 md:mx-16 my-8">
+      <div className="mx-2 md:mx-5 lg:mx-16 my-8">
         <div>
           <div className="text-gray-600 text-xl mb-1">Sedan:</div>
           <div className="flex flex-wrap">
