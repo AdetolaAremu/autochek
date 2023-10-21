@@ -3,18 +3,49 @@ import Layout from "@/components/layout";
 import { CarItem } from "@/interfaces/Cars";
 import { GetServerSideProps, NextPage } from "next";
 import Image from "next/image";
-import React from "react";
+import Link from "next/link";
+import React, { useEffect } from "react";
 
 export interface CarListResponse {
   carList: CarItem;
 }
 
 const GetSingleCar: NextPage<CarListResponse> = ({ carList }) => {
+  const [checkExt, setCheckExt] = React.useState(false);
+
+  const checkIfItsImageOrVideo = () => {
+    const getFileUrl = carList.imageUrl;
+
+    if (!getFileUrl) {
+      return false;
+    }
+
+    const fileExt = getFileUrl.split(".").pop();
+
+    if (!fileExt) {
+      return false;
+    }
+
+    const imageExtensions = ["jpg", "jpeg", "png", "gif", "bmp", "svg", "webp"];
+
+    setCheckExt(imageExtensions.includes(fileExt));
+  };
+
+  useEffect(() => {
+    checkIfItsImageOrVideo();
+  });
+
   return (
     <Layout>
       <div className="bg-gray-300 py-3 mt-8">
         <div className="flex mx-16">
-          <div className="text-orange-700">Home</div>
+          <Link href="/" className="text-orange-700">
+            Home
+          </Link>
+          <div className="mx-5">/</div>
+          <Link href="/market" className="text-orange-700">
+            Market Place
+          </Link>
           <div className="mx-5">/</div>
           <div>{carList.carName}</div>
         </div>
@@ -22,14 +53,24 @@ const GetSingleCar: NextPage<CarListResponse> = ({ carList }) => {
 
       <div className="mx-16 mt-10">
         <div className="flex">
-          {/* {carList.imageUrl} */}
-          <Image
-            src={carList.imageUrl}
-            className="w-[50%] h-[30rem] bg-cover object-fill"
-            alt="logo"
-            height={100}
-            width={100}
-          />
+          {checkExt ? (
+            <Image
+              src={carList.imageUrl}
+              className="w-[50%] h-[24.3rem] bg-cover object-fill"
+              alt="logo"
+              height={100}
+              width={100}
+            />
+          ) : (
+            <video
+              src={carList.imageUrl}
+              width="750"
+              height="500"
+              controls
+              autoPlay
+            ></video>
+          )}
+
           <div className="ml-10 pt-2">
             <div className="text-2xl font-bold flex">
               <div>
@@ -94,17 +135,17 @@ const GetSingleCar: NextPage<CarListResponse> = ({ carList }) => {
                 {carList.inspectorDetails.totalInspection} Vehicles
               </div>
             </div>
+          </div>
+        </div>
 
-            <div className="mt-1">
-              <div className="flex justify-between text-sm">
-                <button className="bg-[#0579C9] text-white px-4 py-1 rounded-md">
-                  Apply for Loan
-                </button>
-                <button className="bg-[#0579C9] text-white px-4 py-1 rounded-md">
-                  Buy Outrightly
-                </button>
-              </div>
-            </div>
+        <div className="mt-4 flex justify-center">
+          <div className="flex">
+            <button className="bg-yellow-700 text-white px-4 py-2 font-bold rounded-md mr-3">
+              Apply for Loan
+            </button>
+            <button className="bg-[#0579C9] text-white px-4 py-2 font-bold rounded-md">
+              Buy Outrightly
+            </button>
           </div>
         </div>
       </div>

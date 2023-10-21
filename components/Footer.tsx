@@ -19,10 +19,10 @@ interface vehicleTypes {
 const Footer: NextPage<vehicleTypes> = ({ categories }) => {
   return (
     <div>
-      <div className="bg-gray-800 mt-10 py-10">
-        <div className="mx-16 grid grid-cols-4">
+      <div className="bg-gray-800 mt-10 py-3">
+        <div className="m-2 md:mx-16 grid grid-cols-1 md:grid-cols-4">
           <div>
-            <div className="text-white text-2xl mb-3">Categories</div>
+            <div className="text-white text-2xl mb-1 md:mb-3">Categories</div>
             {categories?.map((el) => (
               <div className="text-gray-300 text-sm mt-2" key={el}>
                 {el}
@@ -31,7 +31,9 @@ const Footer: NextPage<vehicleTypes> = ({ categories }) => {
           </div>
 
           <div>
-            <div className="text-white text-2xl mb-3">Quick Links</div>
+            <div className="text-white text-2xl mt-3 md:mt-0 mb-1 md:mb-3">
+              Quick Links
+            </div>
             {quickLinks?.map((el) => (
               <div key={el.id}>
                 <Link href={el.link} className="text-gray-300 text-sm mt-2">
@@ -42,7 +44,9 @@ const Footer: NextPage<vehicleTypes> = ({ categories }) => {
           </div>
 
           <div>
-            <div className="text-white text-2xl mb-3">Get in Touch</div>
+            <div className="text-white text-2xl mt-3 md:mt-0 mb-1 md:mb-3">
+              Get in Touch
+            </div>
             {getInTouch?.map((el) => (
               <div className="flex" key={el.id}>
                 <div className="mr-2 pt-2">{el.icon}</div>
@@ -52,11 +56,13 @@ const Footer: NextPage<vehicleTypes> = ({ categories }) => {
           </div>
 
           <div>
-            <div className="text-white text-2xl mb-3">NewsLetter</div>
-            <div className="text-gray-300 mt-4">
+            <div className="text-white text-2xl mt-3 md:mt-0 mb-1 md:mb-3">
+              NewsLetter
+            </div>
+            <div className="text-gray-300 mt-1 md:mt-4">
               Access to quality Loan Financing
             </div>
-            <div className="mt-5">
+            <div className="md:mt-5 mt-2">
               <input type="text" className="h-10 pl-2" placeholder="Email" />
               <button className="bg-[#0579C9] ml-1 py-2 px-3 text-gray-300">
                 Go
@@ -84,65 +90,65 @@ const Footer: NextPage<vehicleTypes> = ({ categories }) => {
           </div>
         </div>
       </div>
-      <div className="mx-16 my-8">
+      <div className="mx-2 md:mx-16 my-8">
         <div>
           <div className="text-gray-600 text-xl mb-1">Sedan:</div>
-          <div className="flex">
+          <div className="flex flex-wrap">
             {carTypes.Sedan.map((el) => (
-              <div key={el} className="flex">
+              <span key={el} className="flex">
                 <Link href={"/"} className="text-gray-600 text-sm">
                   {el}
                 </Link>
-                <div className="text-gray-400 mx-3 -mt-[3px]">|</div>
-              </div>
+                <span className="text-gray-400 mx-3 -mt-[3px]">|</span>
+              </span>
             ))}
           </div>
 
           <div className="text-gray-600 text-xl mb-1 mt-3">SUV:</div>
-          <div className="flex">
+          <div className="flex flex-wrap">
             {carTypes.SUV.map((el) => (
-              <div key={el} className="flex">
+              <span key={el} className="flex">
                 <Link href={"/"} className="text-gray-600 text-sm">
                   {el}
                 </Link>
-                <div className="text-gray-400 mx-3 -mt-[3px]">|</div>
-              </div>
+                <span className="text-gray-400 mx-3 -mt-[3px]">|</span>
+              </span>
             ))}
           </div>
 
           <div className="text-gray-600 text-xl mb-1 mt-3">Hatchback:</div>
-          <div className="flex">
+          <div className="flex flex-wrap">
             {carTypes.Hatchback.map((el) => (
-              <div key={el} className="flex">
+              <span key={el} className="flex">
                 <Link href={"/"} className="text-gray-600 text-sm">
                   {el}
                 </Link>
-                <div className="text-gray-400 mx-3 -mt-[3px]">|</div>
-              </div>
+                <span className="text-gray-400 mx-3 -mt-[3px]">|</span>
+              </span>
             ))}
           </div>
 
           <div className="text-gray-600 text-xl mb-1 mt-3">Sports:</div>
-          <div className="flex">
+          <div className="flex flex-wrap">
             {carTypes.Sports.map((el) => (
-              <div key={el} className="flex">
+              <span key={el} className="flex">
                 <Link href={"/"} className="text-gray-600 text-sm">
                   {el}
                 </Link>
-                <div className="text-gray-400 mx-3 -mt-[3px]">|</div>
-              </div>
+                <span className="text-gray-400 mx-3 -mt-[3px]">|</span>
+              </span>
             ))}
           </div>
 
           <div className="text-gray-600 text-xl mb-1 mt-3">Popular:</div>
-          <div className="flex">
+          <div className="flex flex-wrap">
             {carTypes.Popular.map((el) => (
-              <div key={el} className="flex">
+              <span key={el} className="flex">
                 <Link href={"/"} className="text-gray-600 text-sm">
                   {el}
                 </Link>
-                <div className="text-gray-400 mx-3 -mt-[3px]">|</div>
-              </div>
+                <span className="text-gray-400 mx-3 -mt-[3px]">|</span>
+              </span>
             ))}
           </div>
         </div>

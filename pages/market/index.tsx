@@ -45,10 +45,10 @@ const MarketPlace: NextPage<CarListResponse & MakeListResponse> = ({
         </div>
       </div>
 
-      <div className="mx-16">
-        <div className="flex">
-          <div className="w-3/4">
-            <div className="py-4 grid grid-cols-3 place-items-center">
+      <div className="m-2 md:mx-16">
+        <div className="flex flex-row md:flex-row">
+          <div className="w-full md:w-3/4">
+            <div className="py-4 grid grid-cols-1 md:grid-cols-3 md:place-items-center">
               {carList.map((el) => (
                 <CarCard carList={el} key={el.id} />
               ))}

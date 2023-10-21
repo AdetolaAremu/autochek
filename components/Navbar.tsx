@@ -1,10 +1,12 @@
 import {
+  faBars,
   faCartArrowDown,
   faMapMarker,
   faPhone,
   faSignInAlt,
   faSignOutAlt,
   faTruck,
+  faXmark,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
@@ -12,75 +14,123 @@ import Link from "next/link";
 import React from "react";
 
 const Navbar = () => {
+  const [isMenuOpen, setIsMenuOpen] = React.useState(true);
+
+  // const toggleMenu = () => {
+  //   setIsMenuOpen(!isMenuOpen);
+  // };
+
   return (
     <div>
       <div className="bg-[#0579C9]">
-        <div className="flex mx-16 py-4 text-sm justify-between text-white">
-          <div>Access top notch vehicle financing</div>
-          <div className="flex">
-            <div>
+        <div className="block md:flex mx-2 md:mx-16 py-4 text-md justify-between text-white">
+          <div className="text-center text-lg md:text-md mb-2">
+            Access top notch vehicle financing
+          </div>
+          <div className="block md:flex">
+            <span>
               <FontAwesomeIcon
                 icon={faMapMarker}
-                className="fas fa-check mr-3"
+                className="fas fa-check mr-1 md:mr-3"
               />
               Select Location
-            </div>
-            <div className="mx-10">|</div>
+            </span>
+            <span className="mx-3 md:mx-10">|</span>
 
-            <div>
+            <span>
               <FontAwesomeIcon icon={faTruck} className="fas fa-check mr-3" />{" "}
               Track Order
-            </div>
-            <div className="mx-10">|</div>
+            </span>
+            <span className="mx-3 md:mx-10">|</span>
 
-            <div>
+            <span>
               <FontAwesomeIcon icon={faPhone} className="fas fa-check mr-3" />{" "}
               01-90990-000
-            </div>
-            <div className="mx-10">|</div>
+            </span>
+            <span className="mx-3 md:mx-10">|</span>
 
-            <div>
+            <span>
               <FontAwesomeIcon
                 icon={faSignInAlt}
                 className="fas fa-check mr-3"
               />{" "}
               Log In
-            </div>
-            <div className="mx-10">|</div>
+            </span>
+            <span className="mx-3 md:mx-10">|</span>
 
-            <div>
+            <span>
               <FontAwesomeIcon
                 icon={faSignOutAlt}
                 className="fas fa-check mr-3"
               />{" "}
               Register
-            </div>
+            </span>
           </div>
         </div>
       </div>
 
-      <div className="mx-16 mt-10">
-        <div>
-          <div className="flex justify-between">
-            <Image
-              src="/images/logo.webp"
-              alt="logo"
-              height={150}
-              width={150}
-            />
-
-            {/* <div>
-              <input
-                className="border shadow-lg px-2 w-96 py-3 rounded-md"
-                type="text"
-                placeholder="Search e.g corolla"
+      <div>
+        <div className="mx-2 md:mx-16 mt-10 bg-white">
+          <div className="flex flex-col md:flex-row justify-between items-center">
+            <div className="w-full md:w-auto flex justify-between md:block">
+              <Image
+                src="/images/logo.webp"
+                alt="logo"
+                height={150}
+                width={150}
               />
-              <button className="bg-[#0579C9] ml-2 rounded-md py-3 text-white px-4">
-                Search
-              </button>
-            </div> */}
 
-            <div className="bg-black text-white py-3 px-4 rounded-md">
+              <div className="bg-black text-white py-3 px-4 rounded-lg block md:hidden">
+                <FontAwesomeIcon
+                  icon={faCartArrowDown}
+                  className="fas fa-check"
+                />
+              </div>
+
+              {/* <button
+                onClick={toggleMenu}
+                className="md:hidden text-[#0579C9] text-xl focus:outline-none"
+              >
+                {isMenuOpen ? (
+                  <FontAwesomeIcon icon={faXmark} className="fas fa-check" />
+                ) : (
+                  <FontAwesomeIcon icon={faBars} className="fas fa-check" />
+                )}
+              </button> */}
+            </div>
+
+            <div
+              className={`mt-3 flex justify-center md:justify-end items-center space-x-4 transition-max-h ease-in-out duration-300 overflow-hidden ${
+                isMenuOpen ? "max-h-full" : "max-h-0"
+              }`}
+            >
+              <Link
+                href="/"
+                className="hover:text-blue-500 ease-in-out duration-300"
+              >
+                Home
+              </Link>
+              <Link
+                href="/market"
+                className="hover:text-blue-500 ease-in-out duration-300"
+              >
+                Market Place
+              </Link>
+              <Link
+                href="/"
+                className="hover:text-blue-500 ease-in-out duration-300"
+              >
+                About Us
+              </Link>
+              <Link
+                href="/"
+                className="hover:text-blue-500 ease-in-out duration-300"
+              >
+                Contact Us
+              </Link>
+            </div>
+
+            <div className="bg-black text-white py-3 px-4 rounded-lg hidden md:block">
               <FontAwesomeIcon
                 icon={faCartArrowDown}
                 className="fas fa-check"
@@ -88,25 +138,6 @@ const Navbar = () => {
             </div>
           </div>
         </div>
-      </div>
-
-      <div className="mt-10 flex justify-center">
-        <Link href="/" className="mr-10">
-          Home
-        </Link>
-        {/* <Link href="/market" className="mr-10"></Link> */}
-        <Link href="/market" className="mr-10">
-          Market Place
-        </Link>
-        <Link href="/" className="mr-10">
-          About Us
-        </Link>
-        <Link href="/" className="mr-10">
-          New Arrivals
-        </Link>
-        <Link href="/" className="mr-10">
-          Contact Us
-        </Link>
       </div>
     </div>
   );
