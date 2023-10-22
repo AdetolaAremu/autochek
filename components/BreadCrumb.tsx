@@ -12,7 +12,7 @@ interface BreadcrumbProps {
 
 const BreadCrumb: NextPage<BreadcrumbProps> = ({ items }) => {
   return (
-    <div className="flex mx-16">
+    <div className="flex mx-2 md:mx-5 lg:mx-10 xl:mx-16">
       {items.map((item, index) => (
         <div key={index} className="flex">
           <Link

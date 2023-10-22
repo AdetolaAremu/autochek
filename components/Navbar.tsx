@@ -7,8 +7,9 @@ import {
   faTruck,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Image from "next/image";
+// import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import React from "react";
 
 const Navbar = () => {
@@ -17,6 +18,9 @@ const Navbar = () => {
   // const toggleMenu = () => {
   //   setIsMenuOpen(!isMenuOpen);
   // };
+
+  const router = useRouter();
+  const currentRoute = router.pathname;
 
   return (
     <div>
@@ -106,25 +110,33 @@ const Navbar = () => {
             >
               <Link
                 href="/"
-                className="hover:text-blue-500 ease-in-out duration-300"
+                className={`hover:text-blue-500 ease-in-out duration-300 ${
+                  currentRoute === "/" ? "text-blue-500" : "text-black"
+                }`}
               >
                 Home
               </Link>
               <Link
                 href="/market"
-                className="hover:text-blue-500 ease-in-out duration-300"
+                className={`hover:text-blue-500 ease-in-out duration-300 ${
+                  currentRoute === "/market" ? "text-blue-500" : "text-black"
+                }`}
               >
                 Market
               </Link>
               <Link
                 href="/aboutus"
-                className="hover:text-blue-500 ease-in-out duration-300"
+                className={`hover:text-blue-500 ease-in-out duration-300 ${
+                  currentRoute === "/aboutus" ? "text-blue-500" : "text-black"
+                }`}
               >
                 About Us
               </Link>
               <Link
                 href="/contact"
-                className="hover:text-blue-500 ease-in-out duration-300"
+                className={`hover:text-blue-500 ease-in-out duration-300 ${
+                  currentRoute === "/contact" ? "text-blue-500" : "text-black"
+                }`}
               >
                 Contact Us
               </Link>
