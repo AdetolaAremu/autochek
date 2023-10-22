@@ -1,12 +1,10 @@
 import {
-  faBars,
   faCartArrowDown,
   faMapMarker,
   faPhone,
   faSignInAlt,
   faSignOutAlt,
   faTruck,
-  faXmark,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
@@ -74,7 +72,7 @@ const Navbar = () => {
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="w-full md:w-auto flex justify-between md:block">
               <Link href="/">
-                <Image
+                <img
                   className="mt-2 md:mt-0"
                   src="/images/logo.webp"
                   alt="logo"

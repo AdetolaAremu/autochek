@@ -5,7 +5,6 @@ import {
   faStar,
   faStarHalf,
 } from "@fortawesome/free-solid-svg-icons";
-import Image from "next/image";
 import { CarMake } from "@/interfaces/Makers";
 import { NextPage } from "next";
 import vehicleTypes from "@/utils/Pseudo";
@@ -77,13 +76,7 @@ const SideCard: NextPage<MakeListProps> = ({ makeList }) => {
         <ul className="grid grid-cols-3">
           {makeList?.map((el, index) => (
             <li key={index} className="mt-3 cursor-pointer">
-              <Image
-                src={el.imageUrl}
-                className="h-9"
-                alt="brands"
-                height={40}
-                width={40}
-              />
+              <img src={el.imageUrl} className="h-9 w-9" alt="brands" />
             </li>
           ))}
         </ul>

@@ -3,24 +3,13 @@ import CarCard from "@/components/CarCard";
 import PaginationControls from "@/components/Pagination";
 import SideCard from "@/components/SideCard";
 import Layout from "@/components/layout";
-import { CarItem } from "@/interfaces/Cars";
-import { CarMake } from "@/interfaces/Makers";
+import { CarListResponse } from "@/interfaces/Cars";
+import { MakeListResponse } from "@/interfaces/Makers";
 import { GetServerSideProps, NextPage } from "next";
 import BreadCrumb from "@/components/BreadCrumb";
 
-export interface CarListResponse {
-  carList: CarItem[];
-  currentPage: number;
-  pageSize: number;
-  totalItems: number;
-}
-
-export interface MakeListResponse {
-  makeList: CarMake[];
-}
-
 const MarketPlace: NextPage<CarListResponse & MakeListResponse> = ({
-  carList,
+  result,
   currentPage,
   pageSize,
   totalItems,
@@ -42,7 +31,7 @@ const MarketPlace: NextPage<CarListResponse & MakeListResponse> = ({
           </div>
           <div className="absolute w-full h-full ml-auto top-[270px] flex justify-center text-white">
             <div>
-              <div className="font-extrabold text-3xl">
+              <div className="font-extrabold text-xl lg:text-3xl">
                 VEHICLE MARKET PLACE
               </div>
 
@@ -63,26 +52,28 @@ const MarketPlace: NextPage<CarListResponse & MakeListResponse> = ({
         />
       </div>
 
-      <div className="m-2 md:mx-16">
-        <div className="flex flex-row md:flex-row">
+      <div className="mx-2 md:mx-5 lg:mx-10 xl:mx-16 flex flex-col md:flex-row">
+        <div className="w-full flex flex-col md:flex-row">
           <div className="w-full md:w-3/4">
-            <div className="py-4 grid grid-cols-1 md:grid-cols-3 md:place-items-center">
-              {carList.map((el) => (
+            <div className="py-4 grid grid-cols-1 place-items-center md:grid-cols-2 xl:grid-cols-3">
+              {result.map((el) => (
                 <CarCard carList={el} key={el.id} />
               ))}
             </div>
+
+            <div className="flex justify-center">
+              <PaginationControls
+                currentPage={currentPage}
+                pageSize={pageSize}
+                totalItems={totalItems}
+              />
+            </div>
           </div>
 
-          <SideCard makeList={makeList} />
+          <div className="w-full md:w-1/4">
+            <SideCard makeList={makeList} />
+          </div>
         </div>
-      </div>
-
-      <div className="flex justify-center">
-        <PaginationControls
-          currentPage={currentPage}
-          pageSize={pageSize}
-          totalItems={totalItems}
-        />
       </div>
     </Layout>
   );
@@ -103,7 +94,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   return {
     props: {
-      carList: carList.result,
+      result: carList.result,
       currentPage,
       pageSize,
       makeList: makers.makeList,

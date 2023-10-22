@@ -8,13 +8,12 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Layout from "@/components/layout";
 import { GetServerSideProps, NextPage } from "next";
-import { CarMake, Pagination } from "@/interfaces/Makers";
 import { getAllCars, getPopularBrands } from "@/api";
-import { CarItem, CarListResponse } from "@/interfaces/Cars";
+import { CarListResponse } from "@/interfaces/Cars";
 import Link from "next/link";
 import CarCard from "@/components/CarCard";
 import SideCard from "@/components/SideCard";
-import { MakeListResponse } from "./market";
+import { MakeListResponse } from "@/interfaces/Makers";
 
 const HomePage: NextPage<MakeListResponse & CarListResponse> = ({
   makeList,
@@ -57,7 +56,7 @@ const HomePage: NextPage<MakeListResponse & CarListResponse> = ({
           ))}
           <div className="absolute w-full h-full ml-auto top-[270px] flex justify-center text-white">
             <div>
-              <div className="font-extrabold text-3xl">
+              <div className="font-extrabold text-center text-xl lg:text-3xl">
                 ACCESS TOP NOTCH AUTOMOTIVE FINANCING!
               </div>
 
@@ -109,12 +108,12 @@ const HomePage: NextPage<MakeListResponse & CarListResponse> = ({
                   />
                 </div>
                 <div className="ml-16 md:ml-7 lg:ml-16">
-                  <div className="text-xl lg:text-3xl">Car Financing</div>
+                  <div className="text-xl xl:text-3xl">Car Financing</div>
                   <div className="text-gray-500">Loan up to 10million</div>
                 </div>
               </div>
 
-              <div className="flex my-3">
+              <div className="flex my-3 mr-7 md:mr-0">
                 <div className="pt-2">
                   <FontAwesomeIcon
                     icon={faShippingFast}
@@ -122,12 +121,12 @@ const HomePage: NextPage<MakeListResponse & CarListResponse> = ({
                   />
                 </div>
                 <div className="ml-16 md:ml-7 lg:ml-16">
-                  <div className="text-xl lg:text-3xl">Fast Delivery</div>
+                  <div className="text-xl xl:text-3xl">Fast Delivery</div>
                   <div className="text-gray-500">All over Africa</div>
                 </div>
               </div>
 
-              <div className="flex my-3">
+              <div className="flex my-3 mr-8 md:mr-0">
                 <div className="pt-2">
                   <FontAwesomeIcon
                     icon={faThumbsUp}
@@ -135,7 +134,7 @@ const HomePage: NextPage<MakeListResponse & CarListResponse> = ({
                   />
                 </div>
                 <div className="ml-16 md:ml-7 lg:ml-16">
-                  <div className="text-xl lg:text-3xl">Big Choice</div>
+                  <div className="text-xl xl:text-3xl">Big Choice</div>
                   <div className="text-gray-500">of Brands</div>
                 </div>
               </div>

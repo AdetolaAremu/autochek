@@ -1,5 +1,4 @@
 import { CarItem } from "@/interfaces/Cars";
-import { CarListResponse, MakeListResponse } from "@/pages";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { NextPage } from "next";
@@ -23,7 +22,7 @@ const CarCard: NextPage<CarListingProps> = ({ carList }) => {
           className={`w-full h-56 bg-cover object-fill ${
             !carList.imageUrl && "blur-sm"
           }`}
-          alt="brands"
+          alt="cars"
           height={100}
           width={100}
         />

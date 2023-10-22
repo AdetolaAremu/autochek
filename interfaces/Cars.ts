@@ -89,13 +89,9 @@ export interface CarItem {
   };
 }
 
-export interface CarPagination {
-  total: number;
-  currentPage: number;
-  pageSize: number;
-}
-
 export interface CarListResponse {
   result: CarItem[];
-  pagination: CarPagination;
+  currentPage: number;
+  pageSize: number;
+  totalItems: number;
 }

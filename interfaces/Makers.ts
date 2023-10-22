@@ -9,3 +9,8 @@ export interface Pagination {
   currentPage: number;
   pageSize: number;
 }
+
+export interface MakeListResponse {
+  makeList: CarMake[];
+  pagination: Pagination;
+}
