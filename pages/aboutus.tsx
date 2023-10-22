@@ -5,7 +5,10 @@ import React from "react";
 
 const AboutUS = () => {
   return (
-    <Layout>
+    <Layout
+      title="Autocheck Market Place - About us"
+      description="Autochek listed vehicles - About us page"
+    >
       <div className="relative mt-10">
         <img
           src="/images/topimg.jpg"

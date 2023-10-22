@@ -4,7 +4,6 @@ import Layout from "@/components/layout";
 import { CarItem } from "@/interfaces/Cars";
 import { GetServerSideProps, NextPage } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import React, { useEffect } from "react";
 
 export interface CarListResponse {
@@ -37,7 +36,10 @@ const GetSingleCar: NextPage<CarListResponse> = ({ carList }) => {
   });
 
   return (
-    <Layout>
+    <Layout
+      title={`Autocheck Market Place - ${carList.carName}`}
+      description={`Autochek listed vehicles - ${carList.carName}`}
+    >
       <div className="bg-gray-300 py-3 mt-8">
         <BreadCrumb
           items={[

@@ -6,7 +6,10 @@ import React from "react";
 
 const Contact = () => {
   return (
-    <Layout>
+    <Layout
+      title="Autocheck Market Place - Contact us"
+      description="Autochek listed vehicles - Contact us page"
+    >
       <div className="relative mt-10">
         <img
           src="/images/topimg.jpg"

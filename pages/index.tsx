@@ -1,5 +1,4 @@
 import React from "react";
-import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faArrowAltCircleRight,
@@ -11,23 +10,15 @@ import Layout from "@/components/layout";
 import { GetServerSideProps, NextPage } from "next";
 import { CarMake, Pagination } from "@/interfaces/Makers";
 import { getAllCars, getPopularBrands } from "@/api";
-import { CarItem } from "@/interfaces/Cars";
+import { CarItem, CarListResponse } from "@/interfaces/Cars";
 import Link from "next/link";
 import CarCard from "@/components/CarCard";
 import SideCard from "@/components/SideCard";
-
-export interface MakeListResponse {
-  makeList: CarMake[];
-  pagination: Pagination;
-}
-
-export interface CarListResponse {
-  carList: CarItem[];
-}
+import { MakeListResponse } from "./market";
 
 const HomePage: NextPage<MakeListResponse & CarListResponse> = ({
   makeList,
-  carList,
+  result,
 }) => {
   const [currentIndex, setCurrentIndex] = React.useState(0);
 
@@ -44,7 +35,10 @@ const HomePage: NextPage<MakeListResponse & CarListResponse> = ({
   });
 
   return (
-    <Layout>
+    <Layout
+      title="Autocheck Market Place - Home"
+      description="Autochek listed vehicles - Home page"
+    >
       <div className="mt-8">
         <div className="relative">
           {images.map((image, index) => (
@@ -57,10 +51,21 @@ const HomePage: NextPage<MakeListResponse & CarListResponse> = ({
               <img
                 src={image}
                 alt="top img"
-                className="h-[38rem] w-full bg-cover object-cover"
+                className="h-[38rem] w-full bg-cover object-cover brightness-50"
               />
             </div>
           ))}
+          <div className="absolute w-full h-full ml-auto top-[270px] flex justify-center text-white">
+            <div>
+              <div className="font-extrabold text-3xl">
+                ACCESS TOP NOTCH AUTOMOTIVE FINANCING!
+              </div>
+
+              <div className="font-semibold text-center text-lg mt-2">
+                Your dream car is a click away!
+              </div>
+            </div>
+          </div>
         </div>
 
         <div className="pt-[40rem]">
@@ -69,7 +74,7 @@ const HomePage: NextPage<MakeListResponse & CarListResponse> = ({
           <div className="mx-2 md:mx-5 lg:mx-10 xl:mx-16 flex flex-col md:flex-row">
             <div className="w-full md:w-3/4">
               <div className="py-4 grid grid-cols-1 place-items-center md:grid-cols-2 xl:grid-cols-3">
-                {carList.map((el) => (
+                {result.map((el) => (
                   <CarCard carList={el} key={el.id} />
                 ))}
               </div>
@@ -147,7 +152,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
   const carList = await getAllCars(9, 1);
 
   return {
-    props: { makeList: makers.makeList, carList: carList.result },
+    props: { makeList: makers.makeList, result: carList.result },
   };
 };
 

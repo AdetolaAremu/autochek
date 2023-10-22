@@ -6,8 +6,7 @@ import Layout from "@/components/layout";
 import { CarItem } from "@/interfaces/Cars";
 import { CarMake } from "@/interfaces/Makers";
 import { GetServerSideProps, NextPage } from "next";
-import Image from "next/image";
-import BreadCrumb from "../../components/BreadCrumb";
+import BreadCrumb from "@/components/BreadCrumb";
 
 export interface CarListResponse {
   carList: CarItem[];
@@ -28,15 +27,31 @@ const MarketPlace: NextPage<CarListResponse & MakeListResponse> = ({
   makeList,
 }) => {
   return (
-    <Layout>
+    <Layout
+      title="Autocheck Market Place"
+      description="Autochek listed vehicles"
+    >
       <div className="mt-8">
-        <Image
-          src="/images/corolla1.webp"
-          className="w-full h-[38rem] bg-cover"
-          alt="logo"
-          height={100}
-          width={100}
-        />
+        <div className="relative">
+          <div className={`w-full h-full transition-opacity duration-1000`}>
+            <img
+              src="/images/cars2.webp"
+              alt="top img"
+              className="h-[38rem] w-full bg-cover object-cover brightness-50"
+            />
+          </div>
+          <div className="absolute w-full h-full ml-auto top-[270px] flex justify-center text-white">
+            <div>
+              <div className="font-extrabold text-3xl">
+                VEHICLE MARKET PLACE
+              </div>
+
+              <div className="font-semibold text-center text-lg mt-2">
+                The car you want, we have it.
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div className="bg-gray-300 py-3">
