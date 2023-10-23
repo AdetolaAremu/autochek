@@ -24,14 +24,7 @@ export const getAllCars = async (
 ): Promise<CarListResponse> => {
   try {
     const response = await fetch(
-      `${baseURLProd}/inventory/car/search?page_number=${pageNumber}&pageSize=${pageSize}`,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-      }
+      `${baseURLProd}/inventory/car/search?page_number=${pageNumber}&pageSize=${pageSize}`
     );
 
     if (!response.ok) {
@@ -41,6 +34,10 @@ export const getAllCars = async (
 
     const data = await response.json();
     console.log("data", data);
+    console.log(
+      "URL to be sure",
+      `${baseURLProd}/inventory/car/search?page_number=${pageNumber}&pageSize=${pageSize}`
+    );
     return data;
   } catch (error) {
     throw error;
