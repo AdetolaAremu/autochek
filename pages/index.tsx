@@ -93,9 +93,9 @@ const HomePage: NextPage<MakeListResponse & CarListResponse> = ({
               </div>
             </div>
 
-            <div className="w-full md:w-1/4">
+            {/* <div className="w-full md:w-1/4">
               <SideCard makeList={makeList} />
-            </div>
+            </div> */}
           </div>
 
           <div className="flex flex-row md:flex-col justify-center mt-10 mx-2 md:mx-5 lg:mx-16">
@@ -147,12 +147,15 @@ const HomePage: NextPage<MakeListResponse & CarListResponse> = ({
 };
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const makers = await getPopularBrands();
+  // const makers = await getPopularBrands();
   const carList = await getAllCars(1, 9);
   console.log(carList);
 
   return {
-    props: { makeList: makers.makeList, result: carList.result },
+    props: {
+      // makeList: makers.makeList,
+      result: carList.result,
+    },
   };
 };
 
