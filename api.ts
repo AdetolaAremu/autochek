@@ -39,4 +39,4 @@ export const getSingleCar = async (id: string): Promise<CarListResponse> => {
   } catch (error) {
     throw error;
   }
-}
+};
