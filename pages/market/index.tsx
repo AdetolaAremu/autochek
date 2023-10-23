@@ -93,6 +93,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const carList = await getAllCars(pageNumber, pageSize);
   const makers = await getPopularBrands();
 
+  console.log(carList);
+
   return {
     props: {
       result: carList.result,
