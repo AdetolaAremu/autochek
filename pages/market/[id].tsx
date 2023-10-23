@@ -37,15 +37,15 @@ const GetSingleCar: NextPage<CarListResponse> = ({ carList }) => {
 
   return (
     <Layout
-      title={`Autocheck Market Place - ${carList.carName}`}
-      description={`Autochek listed vehicles - ${carList.carName}`}
+      title={`Autocheck Market Place - ${carList?.carName}`}
+      description={`Autochek listed vehicles - ${carList?.carName}`}
     >
       <div className="bg-gray-300 py-3 mt-8">
         <BreadCrumb
           items={[
             { text: "Home", link: "/" },
             { text: "Market Place", link: "/market" },
-            { text: carList.carName, link: "" },
+            { text: carList?.carName, link: "" },
           ]}
         />
       </div>
@@ -54,7 +54,7 @@ const GetSingleCar: NextPage<CarListResponse> = ({ carList }) => {
         <div className="flex">
           {checkExt ? (
             <Image
-              src={carList.imageUrl}
+              src={carList?.imageUrl}
               className="w-[50%] h-[24.3rem] bg-cover object-fill"
               alt="car"
               height={100}
@@ -64,7 +64,7 @@ const GetSingleCar: NextPage<CarListResponse> = ({ carList }) => {
             />
           ) : (
             <video
-              src={carList.imageUrl}
+              src={carList?.imageUrl}
               width="750"
               height="500"
               controls
@@ -75,25 +75,27 @@ const GetSingleCar: NextPage<CarListResponse> = ({ carList }) => {
           <div className="ml-10 pt-2">
             <div className="text-2xl font-bold flex">
               <div>
-                {carList.carName}{" "}
-                <span className="capitalize">({carList.sellingCondition})</span>
+                {carList?.carName}{" "}
+                <span className="capitalize">
+                  ({carList?.sellingCondition})
+                </span>
               </div>
               <div className="mx-6 text-blue-400">|</div>
-              <div>₦ {carList.marketplacePrice.toLocaleString()}</div>
+              <div>₦ {carList?.marketplacePrice?.toLocaleString()}</div>
             </div>
 
             <div className="fmt-1 text-gray-600 capitalize">
-              <div>Body Type: {carList.bodyType.name}</div>
+              <div>Body Type: {carList?.bodyType?.name}</div>
               <div className="">
-                Mileage: {carList.mileage.toLocaleString()}{" "}
+                Mileage: {carList?.mileage?.toLocaleString()}{" "}
                 {carList.mileageUnit}
               </div>
               <div>VIN: {carList.vin}</div>
-              <div>Wheel Type: {carList.model.wheelType}</div>
+              <div>Wheel Type: {carList?.model?.wheelType}</div>
               <div>
-                Location: {carList.city}, {carList.state}
+                Location: {carList?.city}, {carList?.state}
               </div>
-              <div>Fuel type: {carList.fuelType}</div>
+              <div>Fuel type: {carList?.fuelType}</div>
             </div>
 
             <div className="h-[1px] bg-[#0579C9] my-2"></div>
@@ -104,18 +106,21 @@ const GetSingleCar: NextPage<CarListResponse> = ({ carList }) => {
               </div>
               <div>
                 Loan Percentage:{" "}
-                {carList.financingSettings.loanCalculator.loanPercentage.toFixed(
+                {carList?.financingSettings?.loanCalculator?.loanPercentage?.toFixed(
                   2
                 )}{" "}
                 %
               </div>
               <div className="">
                 Loan Tenure:{" "}
-                {carList.financingSettings.loanCalculator.defaultValues.tenure}
+                {
+                  carList?.financingSettings?.loanCalculator?.defaultValues
+                    ?.tenure
+                }
               </div>
               <div>
                 Interest Rate:{" "}
-                {carList.financingSettings.loanCalculator.defaultValues.interestRate.toFixed(
+                {carList?.financingSettings?.loanCalculator?.defaultValues?.interestRate.toFixed(
                   2
                 )}{" "}
                 %
@@ -129,11 +134,11 @@ const GetSingleCar: NextPage<CarListResponse> = ({ carList }) => {
                 <div className="text-black">Inspecting Officer</div>
               </div>
               <div className="">
-                Name: {carList.inspectorDetails.inspectorFullName}
+                Name: {carList?.inspectorDetails?.inspectorFullName}
               </div>
               <div className="">
                 Successfully inspected:{" "}
-                {carList.inspectorDetails.totalInspection} Vehicles
+                {carList?.inspectorDetails.totalInspection} Vehicles
               </div>
             </div>
           </div>

@@ -26,6 +26,10 @@ export const getAllCars = async (
       `${baseURLStaing}/inventory/car/search?page_number=${pageNumber}&pageSize=${pageSize}`
     );
     console.log("data", response.data);
+    console.log(
+      "URL",
+      `${baseURLStaing}/inventory/car/search?page_number=${pageNumber}&pageSize=${pageSize}`
+    );
     return response.data;
   } catch (error) {
     throw error;
