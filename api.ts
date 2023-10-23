@@ -23,17 +23,25 @@ export const getAllCars = async (
   pageSize: number
 ): Promise<CarListResponse> => {
   try {
-    const response = await axios.get(
+    const response = await fetch(
       `${baseURLProd}/inventory/car/search?page_number=${pageNumber}&pageSize=${pageSize}`,
       {
+        method: "GET",
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
         },
       }
     );
-    console.log("data", response.data);
-    return response.data;
+
+    if (!response.ok) {
+      // Handle non-successful responses, e.g., HTTP error status codes
+      throw new Error(`Request failed with status ${response.status}`);
+    }
+
+    const data = await response.json();
+    console.log("data", data);
+    return data;
   } catch (error) {
     throw error;
   }
