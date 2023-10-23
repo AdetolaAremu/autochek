@@ -38,9 +38,15 @@ const CarCard: NextPage<CarListingProps> = ({ carList }) => {
 
       <div className="mt-2">
         <div className="flex justify-between">
-          <button className="text-xs capitalize bg-[#0579C9] text-white rounded-md px-2">
-            {carList.sellingCondition}
-          </button>
+          <div>
+            <button className="text-xs capitalize bg-[#0579C9] text-white rounded-md px-2">
+              {carList.sellingCondition}
+            </button>
+            <button className="text-xs ml-2 capitalize bg-[#0579C9] text-white rounded-md px-2">
+              {carList.mileage} {carList.mileageUnit}
+            </button>
+          </div>
+
           <button className="text-xs capitalize bg-[#0579C9] text-white rounded-md px-2">
             {carList.state}
           </button>

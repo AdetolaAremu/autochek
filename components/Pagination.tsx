@@ -1,13 +1,13 @@
 import { useRouter } from "next/router";
 
 interface PaginationControlsProps {
-  currentPage: number;
+  pageNumber: number;
   pageSize: number;
   totalItems: number;
 }
 
 const PaginationControls: React.FC<PaginationControlsProps> = ({
-  currentPage,
+  pageNumber,
   pageSize,
   totalItems,
 }) => {
@@ -15,25 +15,25 @@ const PaginationControls: React.FC<PaginationControlsProps> = ({
 
   const totalPages = Math.ceil(totalItems / pageSize);
 
-  const goToPage = (page: number) => {
+  const goToPage = (page_number: number) => {
     router.push({
       pathname: router.pathname,
-      query: { page, pageSize },
+      query: { page_number, pageSize },
     });
   };
 
   return (
     <div className="flex">
       <button
-        onClick={() => goToPage(currentPage - 1)}
-        disabled={currentPage === 1}
+        onClick={() => goToPage(pageNumber - 1)}
+        disabled={pageNumber === 1}
         className="bg-gray-800 text-sm text-white px-4 py-2 mt-3 rounded-md flex justify-center mr-2"
       >
         Prev
       </button>
       <button
-        onClick={() => goToPage(currentPage + 1)}
-        disabled={currentPage === totalPages}
+        onClick={() => goToPage(pageNumber + 1)}
+        disabled={pageNumber === totalPages}
         className="bg-gray-800 text-sm text-white px-4 py-2 mt-3 rounded-md flex justify-center"
       >
         Next

@@ -10,7 +10,7 @@ import BreadCrumb from "@/components/BreadCrumb";
 
 const MarketPlace: NextPage<CarListResponse & MakeListResponse> = ({
   result,
-  currentPage,
+  pageNumber,
   pageSize,
   totalItems,
   makeList,
@@ -63,7 +63,7 @@ const MarketPlace: NextPage<CarListResponse & MakeListResponse> = ({
 
             <div className="flex justify-center">
               <PaginationControls
-                currentPage={currentPage}
+                pageNumber={pageNumber}
                 pageSize={pageSize}
                 totalItems={totalItems}
               />
@@ -81,21 +81,22 @@ const MarketPlace: NextPage<CarListResponse & MakeListResponse> = ({
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { query } = context;
-  const currentPageParam = query.page;
+  console.log(query, "query");
+  const pageNumberParam = query.page_number;
   const pageSizeParam = query.pageSize;
 
-  const currentPage =
-    typeof currentPageParam === "string" ? parseInt(currentPageParam, 10) : 1;
+  const pageNumber =
+    typeof pageNumberParam === "string" ? parseInt(pageNumberParam, 10) : 1;
   const pageSize =
-    typeof pageSizeParam === "string" ? parseInt(pageSizeParam, 10) : 9;
+    typeof pageSizeParam === "string" ? parseInt(pageSizeParam, 10) : 12;
 
-  const carList = await getAllCars(pageSize, currentPage);
+  const carList = await getAllCars(pageNumber, pageSize);
   const makers = await getPopularBrands();
 
   return {
     props: {
       result: carList.result,
-      currentPage,
+      pageNumber,
       pageSize,
       makeList: makers.makeList,
     },

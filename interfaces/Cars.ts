@@ -94,4 +94,5 @@ export interface CarListResponse {
   currentPage: number;
   pageSize: number;
   totalItems: number;
+  pageNumber: number;
 }

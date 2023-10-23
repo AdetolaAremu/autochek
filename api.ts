@@ -19,12 +19,12 @@ export const getPopularBrands = async (): Promise<MakeListResponse> => {
 };
 
 export const getAllCars = async (
-  pageSize: number,
-  currentPage: number
+  pageNumber: number,
+  pageSize: number
 ): Promise<CarListResponse> => {
   try {
     const response = await axios.get(
-      `${baseURLProd}/inventory/car/search?pageSize=${pageSize}&currentPage=${currentPage}`
+      `${baseURLProd}/inventory/car/search?page_number=${pageNumber}&pageSize=${pageSize}`
     );
     return response.data;
   } catch (error) {

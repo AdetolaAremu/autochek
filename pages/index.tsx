@@ -148,7 +148,7 @@ const HomePage: NextPage<MakeListResponse & CarListResponse> = ({
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const makers = await getPopularBrands();
-  const carList = await getAllCars(9, 1);
+  const carList = await getAllCars(1, 9);
 
   return {
     props: { makeList: makers.makeList, result: carList.result },
