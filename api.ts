@@ -24,8 +24,15 @@ export const getAllCars = async (
 ): Promise<CarListResponse> => {
   try {
     const response = await axios.get(
-      `${baseURLProd}/inventory/car/search?page_number=${pageNumber}&pageSize=${pageSize}`
+      `${baseURLProd}/inventory/car/search?page_number=${pageNumber}&pageSize=${pageSize}`,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }
     );
+    console.log("data", response.data);
     return response.data;
   } catch (error) {
     throw error;
