@@ -12,9 +12,11 @@ const MarketPlace: NextPage<CarListResponse & MakeListResponse> = ({
   result,
   pageNumber,
   pageSize,
-  totalItems,
+  total,
   makeList,
 }) => {
+  console.log(total, "items");
+
   return (
     <Layout
       title="Autocheck Market Place"
@@ -65,7 +67,7 @@ const MarketPlace: NextPage<CarListResponse & MakeListResponse> = ({
               <PaginationControls
                 pageNumber={pageNumber}
                 pageSize={pageSize}
-                totalItems={totalItems}
+                total={total}
               />
             </div>
           </div>
@@ -81,7 +83,7 @@ const MarketPlace: NextPage<CarListResponse & MakeListResponse> = ({
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { query } = context;
-  console.log(query, "query");
+  // console.log(query, "query");
   const pageNumberParam = query.page_number;
   const pageSizeParam = query.pageSize;
 
@@ -93,7 +95,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const carList = await getAllCars(pageNumber, pageSize);
   const makers = await getPopularBrands();
 
-  console.log(carList);
+  // console.log(carList);
 
   return {
     props: {

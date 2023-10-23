@@ -3,17 +3,17 @@ import { useRouter } from "next/router";
 interface PaginationControlsProps {
   pageNumber: number;
   pageSize: number;
-  totalItems: number;
+  total: number;
 }
 
 const PaginationControls: React.FC<PaginationControlsProps> = ({
   pageNumber,
   pageSize,
-  totalItems,
+  total,
 }) => {
   const router = useRouter();
 
-  const totalPages = Math.ceil(totalItems / pageSize);
+  const totalPages = Math.ceil(total / pageSize);
 
   const goToPage = (page_number: number) => {
     router.push({

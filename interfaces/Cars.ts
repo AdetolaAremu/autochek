@@ -93,6 +93,6 @@ export interface CarListResponse {
   result: CarItem[];
   currentPage: number;
   pageSize: number;
-  totalItems: number;
+  total: number;
   pageNumber: number;
 }
