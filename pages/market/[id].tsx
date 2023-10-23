@@ -56,9 +56,11 @@ const GetSingleCar: NextPage<CarListResponse> = ({ carList }) => {
             <Image
               src={carList.imageUrl}
               className="w-[50%] h-[24.3rem] bg-cover object-fill"
-              alt="logo"
+              alt="car"
               height={100}
               width={100}
+              placeholder="blur"
+              blurDataURL="/images/blurred.webp"
             />
           ) : (
             <video

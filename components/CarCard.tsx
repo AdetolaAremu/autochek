@@ -25,6 +25,8 @@ const CarCard: NextPage<CarListingProps> = ({ carList }) => {
           alt="cars"
           height={100}
           width={100}
+          placeholder="blur"
+          blurDataURL="/images/blurred.webp"
         />
         <div className="bg-gray-600 px-1 absolute flex -mt-6">
           <div className="mr-3">
